@@ -2,11 +2,10 @@
  ENV PYTHONUNBUFFERED 1
  RUN mkdir /code
  ADD . /code/
- WORKDIR /code/strax
- RUN python setup.py install
  WORKDIR /code
  ADD requirements.txt /code/
  RUN pip install -r requirements.txt
-  
+ RUN pip install git+https://github.com/AxFoundation/strax.git
  EXPOSE 50051
+ 
  CMD ["python", "run_server.py"]
