@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   straxui_app:
-    image: straxui:dev
+    image: straxui
     command: bokeh serve straxui --allow-websocket-origin=localhost
     container_name: straxui_app
     depends_on:
@@ -27,7 +27,7 @@ services:
       - STRAXRPC_ADDR=straxrpc_server:50051
 
   straxrpc_server:
-    image: straxrpc_server:dev
+    image: straxrpc_server
     command: python run_server.py
     container_name: straxrpc_server
     volumes:
