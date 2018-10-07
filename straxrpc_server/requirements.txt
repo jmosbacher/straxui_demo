@@ -1,3 +1,4 @@
+-e git+git://github.com/AxFoundation/strax.git#egg=strax
 grpcio
 numpy
 pandas

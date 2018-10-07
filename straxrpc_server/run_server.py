@@ -3,11 +3,12 @@ if __name__ == '__main__':
         from straxrpc.server import StraxServer
     except ImportError:
         print("failed to import straxrpc, is it installed?")
+        exit()
     try:
         import strax
     except ImportError:
         print("failed to import strax, is it installed?")
-
+        exit()
     server = StraxServer(addr="straxrpc_server:50051")
     st = strax.Context(register_all=strax.xenon.plugins,
                 storage=[
