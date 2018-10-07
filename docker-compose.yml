@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   straxui_app:
-    image: straxui
+    build: https://github.com/jmosbacher/straxui.git
     command: bokeh serve straxui --allow-websocket-origin=localhost
     container_name: straxui_app
     depends_on:
@@ -27,12 +27,12 @@ services:
       - STRAXRPC_ADDR=straxrpc_server:50051
 
   straxrpc_server:
-    image: straxrpc_server
+    build: ./straxrpc_server
     command: python run_server.py
     container_name: straxrpc_server
     volumes:
       - ./straxrpc_server/run_server.py:/code/run_server.py
-      - ~/Sandbox/xenon_sample_data/custom_data:/custom_data
+      - ./custom_data:/custom_data
     ports:
       - 50051:50051
     stdin_open: true
